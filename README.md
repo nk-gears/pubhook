@@ -1,8 +1,7 @@
-# PubHook
+# PubHook - WIP
 
 Site : pubhook.appdews.com
 
-Dated : 25 March 2022 : 8:00 AM
 
 ---
 
