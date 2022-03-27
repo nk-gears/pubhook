@@ -9,6 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "runtimeExecutable": "/Users/Nirmal/.nvm/versions/node/v14.17.4/bin/node",
+            "envFile": "${workspaceFolder}/.env",
             "skipFiles": [
                 "<node_internals>/**"
             ],

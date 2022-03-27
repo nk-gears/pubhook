@@ -1,51 +1,80 @@
-
-const dataUrl="https://script.google.com/macros/s/AKfycbyFBP6yIcopM6H9Hf8n8aNg9_ZQk-kD1-mdRT8O6HlCPCZWguM/exec";
-const unirest=require("unirest");
-const axios=require("axios");
-
-const getWebhooks=async ()=>{
-
-    const resp=await unirest.get(dataUrl + '?q=webhooks');
-    return resp.body;
-
+const dataUrl =
+  "https://script.google.com/macros/s/AKfycbyFBP6yIcopM6H9Hf8n8aNg9_ZQk-kD1-mdRT8O6HlCPCZWguM/exec";
+const axios = require("axios");
+//# File related
+const createFile = async () => {
+  const resp = await axios.post(dataUrl + `?q=create-files`, payload);
+  return resp.data;
 };
 
-const getWebhook=async ()=>{
-    
+const deleteFile = async (fileId) => {
+  const resp = await axios.post(dataUrl + `?q=delete-files&id=${fileId}`);
+  return resp.data;
 };
 
-const patchWebhook=async ()=>{
-    
+const updateFile = async (fileId, payload) => {
+  const resp = await axios.post(
+    dataUrl + `?q=update-files&id=${fileId}`,
+    payload
+  );
+  return resp.data;
 };
 
-
-const deleteWebhook=async ()=>{
-
-    const resp=await unirest
-    .post(dataUrl + '?q=delete-webhook&id=' + "555")
-    .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
-    return resp.body;
-
-    
+const getFile = async (fileId) => {
+  const resp = await axios.post(dataUrl + `?q=get-file&id=${fileId}`,{});
+  return resp.data;
 };
 
-
-const createWebhook=async (payload)=>{
-
-    const resp = await axios.post(dataUrl + '?q=post-webhooks', payload);
-    // const resp=await unirest
-    // .post(dataUrl + '?q=post-webhooks')
-    // .headers({'content-type': 'application/json'})
-    // .send(payload);
-    return resp.data;
-    
+const getFiles = async () => {
+  const resp = await axios.post(dataUrl + `?q=get-files`,{});
+  return resp.data;
 };
 
-const deliverToSubscriber=async (webhookInfo,payload)=>{
+//#Webhook Related
+const getWebhooks = async () => {
+  const resp = await axios.post(dataUrl + `?q=get-webhooks`,{});
+  return resp.data;
+};
 
-    const resp = await axios.post(webhookInfo.url, payload);
-    return resp.data;
+const getWebhook = async (webhookId) => {
+  const resp = await axios.post(dataUrl + `?q=get-webhook&id=${webhookId}`,{});
+  return resp.data;
+};
 
-}
+const updateWebhook = async (webhookId, payload) => {
+  const resp = await axios.post(
+    dataUrl + `?q=update-webhooks&id=${webhookId}`,
+    payload
+  );
+  return resp.data;
+};
 
-module.exports={deliverToSubscriber, getWebhooks,getWebhook,patchWebhook,deleteWebhook,createWebhook};
+const deleteWebhook = async (webhookId) => {
+  const resp = await axios.post(dataUrl + `?q=delete-webhooks&id=${webhookId}`,{});
+  return resp.data;
+};
+
+const createWebhook = async (payload) => {
+  const resp = await axios.post(dataUrl + "?q=create-webhooks", payload);
+  return resp.data;
+};
+
+const deliverToSubscriber = async (webhookInfo, payload) => {
+  const resp = await axios.post(webhookInfo.url, payload);
+  await axios.post(dataUrl + "?q=post-delivery", resp.data);
+  return resp.data;
+};
+
+module.exports = {
+  createFile,
+  updateFile,
+  getFiles,
+  getFile,
+  deleteFile,
+  deliverToSubscriber,
+  getWebhooks,
+  getWebhook,
+  updateWebhook,
+  deleteWebhook,
+  createWebhook,
+};
