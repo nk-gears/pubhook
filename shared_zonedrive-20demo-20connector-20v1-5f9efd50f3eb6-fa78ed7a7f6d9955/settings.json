@@ -1,0 +1,9 @@
+{
+  "connectorId": "shared_zonedrive-20demo-20connector-20v1-5f9efd50f3eb6-fa78ed7a7f6d9955",
+  "environment": "Default-9ea2fa3a-1bc0-4b47-85f6-4116b5e6fd14",
+  "apiProperties": "apiProperties.json",
+  "apiDefinition": "apiDefinition.swagger.json",
+  "icon": "icon.png",
+  "powerAppsUrl": "https://api.powerapps.com",
+  "powerAppsApiVersion": "2016-11-01"
+}

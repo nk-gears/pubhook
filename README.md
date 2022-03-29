@@ -52,3 +52,8 @@ How different from Webhook.site ?
 
 - Webhook.site provides Webhook urls through which one can send request and monitor the payloads.
 - Pubhook expects a webhook Url end point to which the events will be published.
+
+
+gcloud builds submit --pack image=us-east1-docker.pkg.dev/rafa-dev/cloud-run-source-deploy/zonedrive /Users/Nirmal/projects/appdews/pubhook" and "gcloud run deploy zonedrive --image us-east1-docker.pkg.dev/rafa-dev/cloud-run-source-deploy/zonedrive
+
+gcloud run services update zonedrive --update-env-vars BASE_URL=https://zonedrive.appdews.com

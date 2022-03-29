@@ -1,0 +1,509 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ZoneDrive Demo Connector v1",
+    "description": "Demo Connector to Explain the Trigger Concepts.",
+    "version": "1.0",
+    "contact": {
+      "name": "Nirmal",
+      "url": "https://nkdews.me",
+      "email": "nirmalk.web@gmail.com"
+    }
+  },
+  "host": "home.nkdews.me",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/files": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "fileId": {
+                    "type": "string",
+                    "description": "fileId"
+                  },
+                  "fileName": {
+                    "type": "string",
+                    "description": "fileName"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "description"
+                  },
+                  "fileContent": {
+                    "type": "string",
+                    "description": "fileContent"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "description": "createdAt"
+                  },
+                  "modifiedAt": {
+                    "type": "string",
+                    "description": "modifiedAt"
+                  },
+                  "rowId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "rowId"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Files",
+        "description": "Get Files",
+        "operationId": "GetFiles",
+        "parameters": [
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "201",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fileId": {
+                  "type": "string",
+                  "description": "fileId"
+                },
+                "fileName": {
+                  "type": "string",
+                  "description": "fileName"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "description"
+                },
+                "fileContent": {
+                  "type": "string",
+                  "description": "fileContent"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "description": "createdAt"
+                },
+                "modifiedAt": {
+                  "type": "string",
+                  "description": "modifiedAt"
+                },
+                "userId": {
+                  "type": "string",
+                  "description": "userId"
+                },
+                "rowId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "rowId"
+                }
+              }
+            }
+          }
+        },
+        "summary": "CreateFile",
+        "description": "CreateFile",
+        "operationId": "CreateFile",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fileId": {
+                  "type": "string",
+                  "description": "fileId"
+                },
+                "fileName": {
+                  "type": "string",
+                  "description": "fileName"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "description"
+                },
+                "fileContent": {
+                  "type": "string",
+                  "description": "fileContent"
+                },
+                "userId": {
+                  "type": "string",
+                  "description": "userId"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/files/{id}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Get File",
+        "description": "Get File",
+        "operationId": "GetFile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "x-ms-url-encoding": "single",
+            "x-ms-summary": "File Id",
+            "required": true,
+            "description": "File Id",
+            "type": "string"
+          }
+        ]
+      },
+      "patch": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "UpdateFile",
+        "description": "UpdateFile",
+        "operationId": "UpdateFile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "x-ms-url-encoding": "single",
+            "x-ms-summary": "id",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fileId": {
+                  "type": "string",
+                  "description": "fileId"
+                },
+                "fileName": {
+                  "type": "string",
+                  "description": "fileName"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "description"
+                },
+                "fileContent": {
+                  "type": "string",
+                  "description": "fileContent"
+                },
+                "userId": {
+                  "type": "string",
+                  "description": "userId"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/webhooks": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default"
+          }
+        },
+        "summary": "Get Webhooks",
+        "description": "Get Webhooks",
+        "operationId": "GetWebhooks",
+        "parameters": []
+      }
+    },
+    "/webhooks/{id}": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default"
+          }
+        },
+        "summary": "Get Webhook",
+        "description": "Get Webhook",
+        "operationId": "GetWebhook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "x-ms-url-encoding": "single",
+            "description": "Webhook Id",
+            "x-ms-summary": "Webhook Id",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "default": {
+            "description": "default"
+          }
+        },
+        "summary": "Delete Webhook",
+        "description": "Delete Webhook",
+        "operationId": "DeleteWebhook",
+        "x-ms-visibility": "internal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "x-ms-url-encoding": "single",
+            "x-ms-summary": "Webhook Id",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/subscribe": {
+      "x-ms-notification-content": {
+        "description": "200",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string"
+            },
+            "eventType": {
+              "type": "string"
+            },
+            "eventTS": {
+              "type": "integer"
+            },
+            "eventData": {
+              "type": "object",
+              "properties": {
+                "fileId": {
+                  "type": "string"
+                },
+                "fileName": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "fileContent": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "modifiedAt": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "rowId": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "webhookId": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "eventType": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "modifiedAt": {
+                  "type": "string"
+                },
+                "rowId": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "summary": "On File Change",
+        "description": "On File Change",
+        "operationId": "OnFileChange",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "x-ms-trigger": "single",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "description": "userId",
+                  "title": "User Id"
+                },
+                "eventType": {
+                  "type": "string",
+                  "description": "Event Type",
+                  "title": "Event Type"
+                },
+                "url": {
+                  "type": "string",
+                  "description": "url",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "default": "",
+                  "x-ms-notification-url": true
+                }
+              },
+              "required": [
+                "url"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/trigger/file-list": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "fileId": {
+                        "type": "string",
+                        "description": "fileId"
+                      },
+                      "fileName": {
+                        "type": "string",
+                        "description": "fileName"
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "description"
+                      },
+                      "fileContent": {
+                        "type": "string",
+                        "description": "fileContent"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "description": "createdAt"
+                      },
+                      "modifiedAt": {
+                        "type": "string",
+                        "description": "modifiedAt"
+                      },
+                      "rowId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "rowId"
+                      },
+                      "modifiedAtTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "modifiedAtTimestamp",
+                        "title": ""
+                      }
+                    }
+                  },
+                  "description": "data"
+                }
+              }
+            }
+          }
+        },
+        "summary": "OnPollFileChange",
+        "description": "OnPollFileChange",
+        "operationId": "OnPollFileChange",
+        "x-ms-trigger": "batch",
+        "x-ms-trigger-metadata": {
+          "mode": "polling",
+          "kind": "query"
+        },
+        "parameters": [
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "x-ms-visibility": "internal"
+          }
+        ],
+        "x-ms-trigger-hint": "PollFile"
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": [],
+  "x-ms-connector-metadata": [
+    {
+      "propertyName": "Website",
+      "propertyValue": "https://appdews.com/"
+    },
+    {
+      "propertyName": "Privacy policy",
+      "propertyValue": "https://appdews.com/privacy"
+    },
+    {
+      "propertyName": "Categories",
+      "propertyValue": "Data;Marketing"
+    }
+  ]
+}

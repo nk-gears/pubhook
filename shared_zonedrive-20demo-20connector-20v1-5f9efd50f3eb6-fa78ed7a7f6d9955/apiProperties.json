@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "connectionParameters": {},
+    "iconBrandColor": "#007ee5",
+    "capabilities": [],
+    "policyTemplateInstances": [
+      {
+        "templateId": "dynamichosturl",
+        "title": "Response",
+        "parameters": {
+          "x-ms-apimTemplateParameter.urlTemplate": "https://home.nkdews.me"
+        }
+      },
+      {
+        "templateId": "pollingtrigger",
+        "title": "PollingTriggerPolicy_9fa227e0-124c-a436-2815-87f7c7f8fe91",
+        "type": "PollingTrigger",
+        "parameters": {
+          "x-ms-apimTemplateParameter.triggerConfig": {
+            "since": "@{triggerBody().data.[0].modifiedAtTimestamp}"
+          },
+          "x-ms-apimTemplateParameter.triggerDataPath": "@triggerBody().data",
+          "x-ms-apimTemplate-operationName": [
+            "OnPollFileChange"
+          ]
+        }
+      }
+    ],
+    "publisher": "Nirmal Kumar"
+  }
+}
